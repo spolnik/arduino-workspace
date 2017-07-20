@@ -10,8 +10,8 @@ char keys[ROWS][COLS] = {
         {'*','0','#','D'}
 };
 
-byte rowPins[ROWS] = {5, 4, 3, 2}; //connect to the row pinouts of the keypad
-byte colPins[COLS] = {9, 8, 7, 6}; //connect to the column pinouts of the keypad
+byte rowPins[ROWS] = {A0, A1, A2, A3}; //connect to the row pinouts of the keypad
+byte colPins[COLS] = {13, 12, 11, 10}; //connect to the column pinouts of the keypad
 
 Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
 
