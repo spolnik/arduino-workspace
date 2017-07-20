@@ -11,12 +11,16 @@
 #endif
 
 void setup() {
+    Serial.begin(9600);
     pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void blink(int val) {
     digitalWrite(LED_BUILTIN, HIGH);
     delay(val);
+    Serial.print("Blink wait time: ");
+    Serial.print(val);
+    Serial.println(".");
     digitalWrite(LED_BUILTIN, LOW);
     delay(200);
 }
