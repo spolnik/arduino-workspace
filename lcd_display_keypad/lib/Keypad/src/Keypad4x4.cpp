@@ -7,7 +7,7 @@ Keypad4x4::Keypad4x4(char *userKeymap, byte *row, byte *col) {
     sizeKpd.rows = ROWS;
     sizeKpd.columns = COLS;
 
-    begin(userKeymap);
+    keymap = userKeymap;
 
     setDebounceTime(10);
     setHoldTime(500);
@@ -15,11 +15,6 @@ Keypad4x4::Keypad4x4(char *userKeymap, byte *row, byte *col) {
 
     startTime = 0;
     single_key = false;
-}
-
-// Let the user define a keymap - assume the same row/column count as defined in constructor
-void Keypad4x4::begin(char *userKeymap) {
-    keymap = userKeymap;
 }
 
 // Returns a single key only. Retained for backwards compatibility.

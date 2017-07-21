@@ -47,41 +47,44 @@ void setup() {
 }
 
 void loop() {
-    char key = keypad.getKey();
+    char key = keypad.waitForKey();
 
-    if (key) {
-        Serial.println(key);
-        display.print(key);
-        display.display();
+    Serial.println(key);
+    display.print(key);
+    display.display();
 
-        if (key == '1') {
-            servo.write(45);      // Turn SG90 servo Left to 45 degrees
-            delay(1000);          // Wait 1 second
-            servo.write(90);      // Turn SG90 servo back to 90 degrees (center position)
-            delay(1000);          // Wait 1 second
-            servo.write(135);     // Turn SG90 servo Right to 135 degrees
-            delay(1000);          // Wait 1 second
-            servo.write(90);      // Turn SG90 servo back to 90 degrees (center position)
-            delay(1000);
-        } else if (key == '2') {
-            for (servoAngle = 0; servoAngle < 180; servoAngle++)  //move the micro servo from 0 degrees to 180 degrees
-            {
-                servo.write(servoAngle);
-                delay(50);
-            }
-        } else if (key == '*') {
-            for (servoAngle = 0; servoAngle < 1800; servoAngle++)  //move the micro servo from 0 degrees to 180 degrees
-            {
-                servo.write(servoAngle);
-                delay(10);
-            }
-        } else {
-            for (servoAngle = 180;
-                 servoAngle > 0; servoAngle--)  //now move back the micro servo from 0 degrees to 180 degrees
-            {
-                servo.write(servoAngle);
-                delay(10);
-            }
+    if (key == '1') {
+        servo.write(45);      // Turn SG90 servo Left to 45 degrees
+        delay(1000);          // Wait 1 second
+        servo.write(90);      // Turn SG90 servo back to 90 degrees (center position)
+        delay(1000);          // Wait 1 second
+        servo.write(135);     // Turn SG90 servo Right to 135 degrees
+        delay(1000);          // Wait 1 second
+        servo.write(90);      // Turn SG90 servo back to 90 degrees (center position)
+        delay(1000);
+    } else if (key == '2') {
+        for (servoAngle = 0; servoAngle < 180; servoAngle++)  //move the micro servo from 0 degrees to 180 degrees
+        {
+            servo.write(servoAngle);
+            delay(50);
+        }
+    } else if (key == '*') {
+        for (servoAngle = 0; servoAngle < 180; servoAngle++)  //move the micro servo from 0 degrees to 180 degrees
+        {
+            servo.write(servoAngle);
+            delay(10);
+        }
+        for (servoAngle = 180; servoAngle > 0; servoAngle--)  //now move back the micro servo from 0 degrees to 180 degrees
+        {
+            servo.write(servoAngle);
+            delay(10);
+        }
+    } else {
+        for (servoAngle = 180; servoAngle > 0; servoAngle--)  //now move back the micro servo from 0 degrees to 180 degrees
+        {
+            servo.write(servoAngle);
+            delay(10);
         }
     }
+
 }
